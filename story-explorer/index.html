@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Explorer</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <header role="banner">
+        <div class="header-content">
+            <div class="logo">Story Explorer</div>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#add-story" class="nav-link">Add Story</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Home Page -->
+        <section id="home-page" class="page active" role="main">
+            <h1>Explore Amazing Stories</h1>
+            <p>Discover stories from around the world and share your own adventures!</p>
+            
+            <div class="map-container">
+                <h2>Stories Map</h2>
+                <div id="stories-map"></div>
+            </div>
+            
+            <div id="stories-container">
+                <div class="loading">Loading stories...</div>
+            </div>
+        </section>
+
+        <!-- Add Story Page -->
+        <section id="add-story-page" class="page" role="main">
+            <h1>Share Your Story</h1>
+            <p>Add a new story and let others discover your amazing experience!</p>
+            
+            <div class="form-container">
+                <form id="story-form" novalidate>
+                    <div class="form-group">
+                        <label for="story-name">Story Title *</label>
+                        <input type="text" id="story-name" name="name" required aria-describedby="name-error">
+                        <div id="name-error" class="error" style="display: none;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="story-description">Story Description *</label>
+                        <textarea id="story-description" name="description" required aria-describedby="description-error"></textarea>
+                        <div id="description-error" class="error" style="display: none;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="camera-capture">Story Photo *</label>
+                        <div class="camera-container">
+                            <video id="camera-preview" autoplay muted style="display: none;"></video>
+                            <img id="captured-image" style="display: none;" alt="Captured story image">
+                            <div>
+                                <button type="button" id="start-camera" class="btn">Start Camera</button>
+                                <button type="button" id="capture-photo" class="btn" style="display: none;">Capture Photo</button>
+                                <button type="button" id="retake-photo" class="btn" style="display: none;">Retake Photo</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location *</label>
+                        <p>Click on the map to select your story location:</p>
+                        <div id="location-map"></div>
+                        <div id="location-info" style="margin-top: 1rem; color: #666;"></div>
+                    </div>
+
+                    <button type="submit" class="btn" id="submit-btn">Share Story</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Application Scripts -->
+    <script src="js/models/story-model.js"></script>
+    <script src="js/utils/router.js"></script>
+    <script src="js/utils/form-validator.js"></script>
+    <script src="js/presenters/story-presenter.js"></script>
+    <script src="js/presenters/camera-presenter.js"></script>
+    <script src="js/presenters/map-presenter.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
